@@ -18,11 +18,12 @@ body {
 }
 
 #calc-body {
-    border: solid 1px black;
+    border: solid 1px grey;
     margin: auto;
     background: #222;
     width: 60vh;
     box-shadow: 5px 5px #444;
+    padding-bottom: 10px;
 }
 
 #calc {
@@ -32,14 +33,28 @@ body {
     padding: 5vh;
 }
 
+#running-calc {
+    font-family: consolas;
+    text-shadow: 0.08em 0.08em grey;
+    background: #ccc;
+    text-align: right;
+    height: 5vh;
+    border: solid 2px white;
+    border-bottom: none;
+}
+
 #display {
+    font-family: consolas;
+    text-shadow: 0.08em 0.08em grey;
     background: #ccc;
     text-align: right;
     border: solid 2px white;
     margin-bottom: 1em;
     padding: 1em;
+    padding-bottom: 0px;
     height: 5vh;
     margin-bottom: 3em;
+    border-top: none;
 }
 
 #keypad {
@@ -54,14 +69,9 @@ body {
         "zero  eq    eq    div";
 }
 
-.clr-keys:active,
-.op-keys:active,
-.num-keys:active,
-#display {
-    box-shadow: 1px 1px #444;
-}
 
 .clr-keys {
+    background-color: rgb(233, 152, 1);
     border: solid 1px black;
     border-radius: 30%;
     box-shadow: 3px 3px #444;
