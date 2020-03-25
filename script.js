@@ -62,13 +62,13 @@ allClearButton.addEventListener('click', () => {
     display.innerHTML = "";
     store = 0;
     runningCalc.innerHTML = "";
-})
+});
 
 addButton.addEventListener('click', () => {
     if (op == '') op = '+';
     console.log(`store before = ${store}`);
     console.log(`op = ${op}`);
-    console.log(`new entry = ${display.innerHTML}`)
+    console.log(`new entry = ${display.innerHTML}`);
     store = operate(store, op, display.innerHTML);
     console.log(`store after = ${store}`);
     op = '+';
@@ -80,7 +80,7 @@ subButton.addEventListener('click', () => {
     if (op == '') op = '+';
     console.log(`store before = ${store}`);
     console.log(`op = ${op}`);
-    console.log(`new entry = ${display.innerHTML}`)
+    console.log(`new entry = ${display.innerHTML}`);
     store = operate(store, op, display.innerHTML);
     console.log(`store after = ${store}`);
     op = '-';
@@ -92,7 +92,7 @@ mulButton.addEventListener('click', () => {
     if (op == '') op = '+';
     console.log(`store before = ${store}`);
     console.log(`op = ${op}`);
-    console.log(`new entry = ${display.innerHTML}`)
+    console.log(`new entry = ${display.innerHTML}`);
     store = operate(store, op, display.innerHTML);
     console.log(`store after = ${store}`);
     op = '*';
@@ -104,7 +104,7 @@ divButton.addEventListener('click', () => {
     if (op == '') op = '+';
     console.log(`store before = ${store}`);
     console.log(`op = ${op}`);
-    console.log(`new entry = ${display.innerHTML}`)
+    console.log(`new entry = ${display.innerHTML}`);
     store = operate(store, op, display.innerHTML);
     console.log(`store after = ${store}`);
     op = '/';
@@ -116,7 +116,7 @@ powButton.addEventListener('click', () => {
     if (op == '') op = '+';
     console.log(`store before = ${store}`);
     console.log(`op = ${op}`);
-    console.log(`new entry = ${display.innerHTML}`)
+    console.log(`new entry = ${display.innerHTML}`);
     store = operate(store, op, display.innerHTML);
     console.log(`store after = ${store}`);
     op = '^';
@@ -128,7 +128,7 @@ powButton.addEventListener('click', () => {
 equalButton.addEventListener('click', () => {
     console.log(`store before = ${store}`);
     console.log(`op = ${op}`);
-    console.log(`new entry = ${display.innerHTML}`)
+    console.log(`new entry = ${display.innerHTML}`);
     store = operate(store, op, display.innerHTML);
     console.log(`store after = ${store}`);
     runningCalc.innerHTML = '';
