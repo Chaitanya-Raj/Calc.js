@@ -39,8 +39,9 @@ body {
     background: #ccc;
     text-align: right;
     height: 5vh;
-    border: solid 2px white;
+    border: solid 2px #777;
     border-bottom: none;
+    background-image: linear-gradient(to right, #ccc, #fff);
 }
 
 #display {
@@ -48,13 +49,14 @@ body {
     text-shadow: 0.08em 0.08em grey;
     background: #ccc;
     text-align: right;
-    border: solid 2px white;
+    border: solid 2px #777;
     margin-bottom: 1em;
     padding: 1em;
     padding-bottom: 0px;
     height: 5vh;
     margin-bottom: 3em;
     border-top: none;
+    background-image: linear-gradient(to right, #ccc, #fff);
 }
 
 #keypad {
