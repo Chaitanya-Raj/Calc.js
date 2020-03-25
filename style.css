@@ -153,3 +153,19 @@ body {
 #zero {
     grid-area: zero;
 }
+
+#contacts {
+    display: flex;
+    position: fixed;
+    top: 18vh;
+    left: 90vw;
+}
+
+img {
+    width: 50px;
+    margin: 10px;
+}
+
+img:hover {
+    transform: scale(1.2);
+}
