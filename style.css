@@ -79,7 +79,8 @@ body {
     box-shadow: 3px 3px #444;
 }
 
-.op-keys {
+.op-keys,
+#equal {
     background-image: linear-gradient(to bottom right, purple, violet);
     color: seashell;
     border: solid 1px black;

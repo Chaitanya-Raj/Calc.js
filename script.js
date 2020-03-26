@@ -1,137 +1,80 @@
-const addButton = document.getElementById('add');
-const subButton = document.getElementById('sub');
-const mulButton = document.getElementById('mul');
-const divButton = document.getElementById('div');
-const powButton = document.getElementById('pow');
+const opButtons = document.querySelectorAll('.op-keys');
 const equalButton = document.getElementById('equal');
 
 const numButtons = document.querySelectorAll('.num-keys');
 
-const clearButton = document.getElementById('c');
+const deleteButton = document.getElementById('del');
 const allClearButton = document.getElementById('ac');
+
 const display = document.getElementById('display');
+const runningCalc = document.getElementById("running-calc");
 
-let store = 0;
-let op = '';
-let runningCalc = document.getElementById("running-calc");
-
-function add(a, b) {
-    return (parseInt(a) + parseInt(b));
-}
-
-function subtract(a, b) {
-    return (parseInt(a) - parseInt(b));
-}
-
-function multiply(a, b) {
-    return (parseInt(a) * parseInt(b));
-}
-
-function divide(a, b) {
-    return (parseInt(a) / parseInt(b));
-}
-
-function power(a, b) {
-    return (parseInt(a) ** parseInt(b));
-}
-
-function operate(a, op, b) {
-    if (op == '+')
-        return add(a, b);
-    else if (op == '-')
-        return subtract(a, b);
-    else if (op == '*')
-        return multiply(a, b);
-    else if (op == '/')
-        return divide(a, b);
-    else if (op == '^')
-        return power(a, b);
-}
-
-function appendNum(button) {
-    display.innerHTML += button.innerHTML;
+function compute() {
+    let computation;
+    let prev = parseFloat(runningCalc.innerText);
+    let current = parseFloat(display.innerText);
+    if (isNaN(prev) || isNaN(current)) return;
+    switch (op) {
+        case "+":
+            computation = prev + current;
+            break;
+        case "-":
+            computation = prev - current;
+            break;
+        case "*":
+            computation = prev * current;
+            break;
+        case "/":
+            computation = prev / current;
+            break;
+        case "^":
+            computation = prev ** current;
+            break;
+        default:
+            return;
+    }
+    display.innerText = computation;
+    op = undefined;
+    runningCalc.innerText = "";
 }
 
 numButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        appendNum(button);
+        console.log(button.innerText);
+        console.log(display.innerText);
+        if (button.innerText === "." && display.innerText.includes("."))
+            return;
+        display.innerText += button.innerText;
     });
 });
 
-allClearButton.addEventListener('click', () => {
-    display.innerHTML = "";
-    store = 0;
-    runningCalc.innerHTML = "";
-});
+let op;
 
-addButton.addEventListener('click', () => {
-    if (op == '') op = '+';
-    console.log(`store before = ${store}`);
-    console.log(`op = ${op}`);
-    console.log(`new entry = ${display.innerHTML}`);
-    store = operate(store, op, display.innerHTML);
-    console.log(`store after = ${store}`);
-    op = '+';
-    runningCalc.innerHTML += `${display.innerHTML}+`;
-    display.innerHTML = "";
+opButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (display.innerText === "") return;
+        if (runningCalc.innerText !== "") {
+            compute();
+        }
+        op = button.innerText;
+        runningCalc.innerText = display.innerText;
+        display.innerText = "";
+        if (op != null) {
+            runningCalc.innerText = `${runningCalc.innerText} ${op}`;
+        }
+    });
 });
-
-subButton.addEventListener('click', () => {
-    if (op == '') op = '+';
-    console.log(`store before = ${store}`);
-    console.log(`op = ${op}`);
-    console.log(`new entry = ${display.innerHTML}`);
-    store = operate(store, op, display.innerHTML);
-    console.log(`store after = ${store}`);
-    op = '-';
-    runningCalc.innerHTML += `${display.innerHTML}-`;
-    display.innerHTML = "";
-});
-
-mulButton.addEventListener('click', () => {
-    if (op == '') op = '+';
-    console.log(`store before = ${store}`);
-    console.log(`op = ${op}`);
-    console.log(`new entry = ${display.innerHTML}`);
-    store = operate(store, op, display.innerHTML);
-    console.log(`store after = ${store}`);
-    op = '*';
-    runningCalc.innerHTML += `${display.innerHTML}*`;
-    display.innerHTML = "";
-});
-
-divButton.addEventListener('click', () => {
-    if (op == '') op = '+';
-    console.log(`store before = ${store}`);
-    console.log(`op = ${op}`);
-    console.log(`new entry = ${display.innerHTML}`);
-    store = operate(store, op, display.innerHTML);
-    console.log(`store after = ${store}`);
-    op = '/';
-    runningCalc.innerHTML += `${display.innerHTML}/`;
-    display.innerHTML = "";
-});
-
-powButton.addEventListener('click', () => {
-    if (op == '') op = '+';
-    console.log(`store before = ${store}`);
-    console.log(`op = ${op}`);
-    console.log(`new entry = ${display.innerHTML}`);
-    store = operate(store, op, display.innerHTML);
-    console.log(`store after = ${store}`);
-    op = '^';
-    runningCalc.innerHTML += `${display.innerHTML}^`;
-    display.innerHTML = "";
-});
-
 
 equalButton.addEventListener('click', () => {
-    console.log(`store before = ${store}`);
-    console.log(`op = ${op}`);
-    console.log(`new entry = ${display.innerHTML}`);
-    store = operate(store, op, display.innerHTML);
-    console.log(`store after = ${store}`);
-    runningCalc.innerHTML = '';
-    display.innerHTML = store;
-    store = 0;
+    compute();
+});
+
+allClearButton.addEventListener('click', () => {
+    display.innerText = "";
+    runningCalc.innerText = "";
+    op = undefined;
+});
+
+deleteButton.addEventListener('click', () => {
+    display.innerText = display.innerText.slice(0, -1);
 });
