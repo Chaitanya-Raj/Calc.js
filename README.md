@@ -1,4 +1,4 @@
 # Calc.js
 A calculator implemented with vanilla JavaScript.
 
-[Demonstartion](https://chaitanya-raj.github.io/Calc.js/)
+[Demonstration](https://chaitanya-raj.github.io/Calc.js/)
